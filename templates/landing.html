@@ -11,8 +11,8 @@
         <p>Gym Social</p>
         <div class="right-buttons">
             <a href="{{ url_for('landing') }}" class="top-menu-btn">Home</a>
-            <a href="#" class="top-menu-btn">My Routine</a>
-            <a href="#" class="top-menu-btn">My Body</a>
+            <a href="{{ url_for('my_routines') }}" class="top-menu-btn">My Routines</a> 
+            <a href="#" class="top-menu-btn">Profile</a>
             <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
         </div>
     </header>

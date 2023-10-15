@@ -114,6 +114,21 @@ def like_post(post_id):
     
     return jsonify({"success": False, "message": "Please login first."})
 
+@app.route('/my_routines')
+def my_routines():
+    if 'username' in session:
+        conn = get_db_connection()
+        # Fetching all posts created by the logged-in user
+        posts = conn.execute('''
+            SELECT posts.id, users.username, posts.body_part, posts.content, posts.likes
+            FROM posts JOIN users ON posts.user_id = users.id
+            WHERE users.username = ?
+            ORDER BY posts.id DESC
+        ''', (session['username'],)).fetchall()
+        conn.close()
+        return render_template('landing.html', username=session['username'], posts=posts)
+    return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run()
