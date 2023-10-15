@@ -136,6 +136,7 @@ nav a:hover {
 }
 .content {
     white-space: pre-line;
+    margin-bottom: 20px;  /* Space below the post content */
 }
 
 .username {
@@ -222,25 +223,38 @@ nav a:hover {
 }
 
 /* Style for displaying posts */
-.post {
+/* .post {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+} */
 
 .username {
-    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.5em;  /* Increase font size */
+    font-weight: bold; /* Make it bold */
+    color: #2c3e50;   /* Give it a distinct color, adjust as needed */
+    margin-bottom: 10px;  /* Space below the username */
 }
-
 .body_part {
     color: #0077cc;
     font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;  /* Space below the body part */
+}
+
+.username, .body_part {
+    display: inline-block;  /* Changed from block to inline-block */
+    margin-right: 10px;  
 }
 
 .like-section {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 10px;  /* Space above the like section */
 }
 
 .like-button {
