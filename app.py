@@ -55,18 +55,17 @@ def signup():
 
     return render_template('signup.html')
 
-@app.route('/landing')
-def landing():
-    if 'username' in session:
-        conn = get_db_connection()
-        posts = conn.execute('''
-            SELECT posts.id, users.username, posts.body_part, posts.content, posts.likes
-            FROM posts JOIN users ON posts.user_id = users.id
-            ORDER BY posts.id DESC
-        ''').fetchall()
-        conn.close()
-        return render_template('landing.html', username=session['username'], posts=posts)
-    return redirect(url_for('login'))
+@app.route('/landing', defaults={'body_part': None}, methods=['GET', 'POST'])
+@app.route('/landing/<body_part>/', methods=['GET', 'POST'])
+def landing(body_part=None):
+    conn = get_db_connection()
+    if body_part:
+        posts = conn.execute('SELECT p.id, p.content, p.likes, p.body_part, u.username FROM posts p JOIN users u ON p.user_id = u.id WHERE p.body_part = ? ORDER BY p.id DESC', (body_part,)).fetchall()
+    else:
+        posts = conn.execute('SELECT p.id, p.content, p.likes, p.body_part, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.id DESC').fetchall()
+    conn.close()
+    return render_template('landing.html', posts=posts)
+
 
 
 @app.route('/logout')

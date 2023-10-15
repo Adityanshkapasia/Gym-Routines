@@ -18,8 +18,8 @@
     </header>
     <main>
         <div class="side-menu">
-            <a href="#" class="menu-btn">Chest</a>
-            <a href="#" class="menu-btn">Legs</a>
+            <a href="{{ url_for('landing', body_part='chest') }}" class="menu-btn">Chest</a>
+            <a href="{{ url_for('landing', body_part='legs') }}" class="menu-btn">Legs</a>        
             <a href="#" class="menu-btn">Arms</a>
             <a href="#" class="menu-btn">Back</a>
             <a href="#" class="menu-btn">Shoulders</a>
