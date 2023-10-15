@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Gym Social</title>
 </head>
 <body>
-   <div class="top-bar">
-    <p>Gym Social</p>
-    <div class="right-buttons">
-        <a href="#" class="top-menu-btn">Home</a>
-        <a href="#" class="top-menu-btn">My Routine</a>
-        <a href="#" class="top-menu-btn">My Body</a>
-        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
-    </div>
-</div>
-
+    <header class="top-bar">
+        <p>Gym Social</p>
+        <div class="right-buttons">
+            <a href="#" class="top-menu-btn">Home</a>
+            <a href="#" class="top-menu-btn">My Routine</a>
+            <a href="#" class="top-menu-btn">My Body</a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </header>
     <main>
+        <div class="side-menu">
+            <a href="#" class="menu-btn">Chest</a>
+            <a href="#" class="menu-btn">Legs</a>
+            <a href="#" class="menu-btn">Arms</a>
+            <a href="#" class="menu-btn">Back</a>
+            <a href="#" class="menu-btn">Shoulders</a>
+            <a href="#" class="menu-btn">Abs</a>
+        </div>        
         <section id="feed">
             <div class="box create-post">
                 <form action="{{ url_for('create_post') }}" method="post">
@@ -27,7 +34,6 @@
                         <option value="legs">#legs</option>
                         <!-- Add other body parts as needed -->
                     </select>
-                    
                     <input type="submit" value="Create Post">
                 </form>
             </div>
@@ -42,9 +48,16 @@
                     <p class="likes-count">{{ post.likes }} likes</p>
                 </div>
             </div>
-        {% endfor %}       
-            <!-- Scrollable feed area (currently left blank) -->
+            {% endfor %}
         </section>
     </main>
+    <script>
+        const textarea = document.querySelector('textarea[name="content"]');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
+    
 </body>
 </html>

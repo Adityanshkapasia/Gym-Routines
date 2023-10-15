@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -115,15 +121,21 @@ nav a:hover {
 }
 
 #feed {
-    flex: 1;
-    padding: 1em;
-    overflow-y: auto;
+    margin-left: 10px; /* Accommodate the side menu width */
+    width: calc(100% - 220px); /* Calculate the remaining width */
+    padding: 20px;
+    overflow-y: auto; /* Allows vertical scrolling if content overflows */
 }
+
+
 
 .post {
     border: 1px solid #ddd;
     padding: 10px;
     margin-bottom: 10px;
+}
+.content {
+    white-space: pre-line;
 }
 
 .username {
@@ -165,10 +177,11 @@ nav a:hover {
 }
 
 .create-post textarea {
-    height: 100%;
+    height: auto;
+    overflow-y: hidden;  /* Hide vertical scrollbar */
+    resize: none;        /* Disable textarea resizing */
     width: 100%;
     box-sizing: border-box;
-    resize: none;
     padding: 10px;
     font-size: 16px;
     border: none;  /* <-- This line removes the border */
@@ -291,3 +304,25 @@ nav a:hover {
     gap: 8px; /* Spacing between buttons */
 }
 
+/* Styles for the side menu */
+.side-menu {
+    float: left;
+    width: 220px;
+    height: 100vh;
+    background-color: #2c2c2c;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-btn {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #333; /* Separator between buttons */
+    transition: background-color 0.3s;
+}
+
+.menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Highlight on hover */
+}
