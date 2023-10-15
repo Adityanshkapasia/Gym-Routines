@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Ethics</title>
+    <title>Gym Social</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>Gym Ethics</h1>
+        <h1>Gym Social</h1>
     </header>
     <main>
         <section id="articles">
@@ -20,7 +20,15 @@
                 <h2>Article 2</h2>
                 <p>Content for article 2...</p>
             </article>
-            <!-- Add more articles as needed -->
+            <article>
+                <h2>Article 3</h2>
+                <p>Content for article 3...</p>
+            </article>
+            <article>
+                <h2>Article 4</h2>
+                <p>Content for article 4...</p>
+            </article>
+
         </section>
         <aside id="login-section">
             <form action="{{ url_for('login') }}" method="post">
@@ -39,3 +47,5 @@
     </main>
 </body>
 </html>
+
+
