@@ -57,7 +57,7 @@ def signup():
 
 @app.route('/landing', defaults={'body_part': None}, methods=['GET', 'POST'])
 @app.route('/landing/<body_part>/', methods=['GET', 'POST'])
-def landing(body_part=None):
+def landing(body_part):
     conn = get_db_connection()
     if body_part:
         posts = conn.execute('SELECT p.id, p.content, p.likes, p.body_part, u.username FROM posts p JOIN users u ON p.user_id = u.id WHERE p.body_part = ? ORDER BY p.id DESC', (body_part,)).fetchall()
@@ -65,6 +65,7 @@ def landing(body_part=None):
         posts = conn.execute('SELECT p.id, p.content, p.likes, p.body_part, u.username FROM posts p JOIN users u ON p.user_id = u.id ORDER BY p.id DESC').fetchall()
     conn.close()
     return render_template('landing.html', posts=posts)
+
 
 
 
