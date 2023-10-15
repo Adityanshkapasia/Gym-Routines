@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 from datetime import timedelta
@@ -91,7 +91,7 @@ def create_post():
 
 
 
-@app.route('/like_post/<int:post_id>')
+@app.route('/like_post/<int:post_id>', methods=['POST'])
 def like_post(post_id):
     if 'username' in session:
         conn = get_db_connection()
@@ -105,11 +105,14 @@ def like_post(post_id):
             conn.execute('UPDATE posts SET likes = likes + 1 WHERE id = ?', (post_id,))
             conn.execute('INSERT INTO likes (user_id, post_id) VALUES (?, ?)', (session['user_id'], post_id))
             conn.commit()
+            new_like_count = conn.execute('SELECT likes FROM posts WHERE id = ?', (post_id,)).fetchone()[0]
+            conn.close()
+            return jsonify({"likes": new_like_count, "success": True})
 
         conn.close()
-        return redirect(url_for('landing'))
-    return redirect(url_for('login'))
-
+        return jsonify({"success": False, "message": "You've already liked this post!"})
+    
+    return jsonify({"success": False, "message": "Please login first."})
 
 
 if __name__ == '__main__':

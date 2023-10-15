@@ -44,8 +44,8 @@
                 <p class="body_part">#{{ post.body_part }}</p>
                 <p class="content">{{ post.content }}</p>
                 <div class="like-section">
-                    <a href="{{ url_for('like_post', post_id=post.id) }}" class="like-button">Like</a>
-                    <p class="likes-count">{{ post.likes }} likes</p>
+                    <a href="#" class="like-button" data-post-id="{{ post.id }}">Like</a>
+                    <p class="likes-count" data-post-id="{{ post.id }}">{{ post.likes }} likes</p>                    
                 </div>
             </div>
             {% endfor %}
@@ -58,6 +58,28 @@
             this.style.height = (this.scrollHeight) + 'px';
         });
     </script>
-    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let likeButtons = document.querySelectorAll(".like-button");
+        likeButtons.forEach(button => {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                let postId = button.getAttribute("data-post-id");
+                fetch(`/like_post/${postId}`, {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success) {
+                        let likesCountElem = document.querySelector(`.likes-count[data-post-id="${postId}"]`);
+                        likesCountElem.textContent = `${data.likes} likes`;
+                    } else {
+                        alert(data.message);
+                    }
+                });
+            });
+        });
+    });
+    </script>
 </body>
 </html>
