@@ -1,0 +1,293 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    flex: 0 0 15%;  /* This makes the header take up 15% of the screen height */
+}
+
+main {
+    flex: 1;  /* This makes the main section occupy the rest of the screen height */
+    display: flex;
+}
+
+#articles {
+    flex: 0.7;  /* 70% width */
+    padding: 2em;
+    overflow-y: auto;
+}
+
+#login-section {
+    flex: 0.3;  /* 30% width */
+    background-color: #f4f4f4;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 1em;
+}
+
+.signup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+.signup-button:hover {
+    background-color: #555;
+}
+
+/* Landing page*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+}
+
+.title {
+    margin: 0;
+}
+
+.logout-button {
+    padding: 8px 15px;
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    background-color: #777;
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 60px); /* Subtracting header height */
+}
+
+nav {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    margin-bottom: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    display: block;
+}
+
+nav a:hover {
+    background-color: #ccc;
+}
+
+#feed {
+    flex: 1;
+    padding: 1em;
+    overflow-y: auto;
+}
+
+.post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.body_part {
+    color: #0077cc;
+}
+
+.like-button {
+    background-color: #0077cc;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.likes-count {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* modernize posts */
+
+/* General styles for the white box with curved edges */
+.box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the post creation form */
+.create-post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-post textarea {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    border: none;  /* <-- This line removes the border */
+    border-radius: 5px;
+    outline: none;  /* <-- This line removes the outline when the textarea is focused */
+}
+
+
+.create-post textarea::placeholder {
+    color: lightgray;
+}
+
+.create-post select {
+    flex-grow: 1; /* Allows it to take up available space */
+    margin-right: 10px; /* Space between selector and button */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.create-post input[type="submit"] {
+    flex-shrink: 0; /* Prevents the button from shrinking */
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.create-post input[type="submit"] {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-post input[type="submit"]:hover {
+    background-color: #0055aa;
+}
+
+/* Style for displaying posts */
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.body_part {
+    color: #0077cc;
+    font-weight: bold;
+}
+
+.like-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.like-button {
+    background-color: #0077cc;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #0055aa;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+
+.top-menu-btn, .logout-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 2px;
+    border-radius: 16px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.top-menu-btn:hover, .logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container.feed {
+    width: 70%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right-buttons {
+    display: flex;
+    gap: 8px; /* Spacing between buttons */
+}
+

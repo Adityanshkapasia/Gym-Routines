@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Ethics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gym Ethics</h1>
+    </header>
+    <main>
+        <section id="articles">
+            <article>
+                <h2>Article 1</h2>
+                <p>Content for article 1...</p>
+            </article>
+            <article>
+                <h2>Article 2</h2>
+                <p>Content for article 2...</p>
+            </article>
+            <!-- Add more articles as needed -->
+        </section>
+        <aside id="login-section">
+            <form action="{{ url_for('login') }}" method="post">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <input type="submit" value="Login">
+            </form>
+            <a href="{{ url_for('signup') }}" class="signup-button">Sign Up</a>
+        </aside>
+    </main>
+</body>
+</html>
