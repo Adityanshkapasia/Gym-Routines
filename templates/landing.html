@@ -19,21 +19,24 @@
     <main>
         <div class="side-menu">
             <a href="{{ url_for('landing', body_part='chest') }}" class="menu-btn">Chest</a>
-            <a href="{{ url_for('landing', body_part='legs') }}" class="menu-btn">Legs</a>        
-            <a href="#" class="menu-btn">Arms</a>
-            <a href="#" class="menu-btn">Back</a>
-            <a href="#" class="menu-btn">Shoulders</a>
-            <a href="#" class="menu-btn">Abs</a>
-        </div>        
+            <a href="{{ url_for('landing', body_part='legs') }}" class="menu-btn">Legs</a>
+            <a href="{{ url_for('landing', body_part='arms') }}" class="menu-btn">Arms</a>
+            <a href="{{ url_for('landing', body_part='back') }}" class="menu-btn">Back</a>
+            <a href="{{ url_for('landing', body_part='shoulders') }}" class="menu-btn">Shoulders</a>
+            <a href="{{ url_for('landing', body_part='abs') }}" class="menu-btn">Abs</a>
+        </div>               
         <section id="feed">
             <div class="box create-post">
                 <form action="{{ url_for('create_post') }}" method="post">
                     <textarea name="content" placeholder="Write your gym routine..."></textarea>
                     <select name="body_part">
-                        <option value="chest">#chest</option>
-                        <option value="legs">#legs</option>
-                        <!-- Add other body parts as needed -->
-                    </select>
+                        <option value="chest">#Chest</option>
+                        <option value="legs">#Legs</option>
+                        <option value="arms">#Arms</option>
+                        <option value="back">#Back</option>
+                        <option value="shoulders">#Shoulders</option>
+                        <option value="abs">#Abs</option>
+                    </select>                    
                     <input type="submit" value="Create Post">
                 </form>
             </div>
